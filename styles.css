@@ -100,6 +100,23 @@ div h2 {
 
 .my-works ol li {
     cursor: pointer;
+    height: 100%;
+    padding: 10px;
+    min-height: 300px;
+}
+
+.my-works ol li:hover{
+    transform: scale(1.1);
+    transition: 0.6s;
+}
+
+.my-works ol li img{
+    min-height: 150px;
+    max-height: 175px;
+    width: 100%;
+    align-self: baseline;
+    border-radius: 12px;
+    padding-bottom: 5px;
 }
 
 .my-works ol li a {
