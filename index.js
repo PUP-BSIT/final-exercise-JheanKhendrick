@@ -94,6 +94,17 @@ const sortComments = (comments, order) => {
     });
 };
 
+const experience = document.querySelector(".experience");
+const experienceContainer = document.querySelector(".journey-container")
+
+experience.addEventListener("click", () => {
+    if(experienceContainer.classList.contains("journey-container-show")) {
+        experienceContainer.classList.remove("journey-container-show");
+    } else {
+        experienceContainer.classList.add("journey-container-show");
+    }
+})
+
 commentBtn.addEventListener("click", addComment);
 commentBox.addEventListener("input", handleInputChange);
 nameBox.addEventListener("input", handleInputChange);
