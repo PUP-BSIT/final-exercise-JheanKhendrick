@@ -94,19 +94,23 @@ const sortComments = (comments, order) => {
     });
 };
 
-const experience = document.querySelector(".experience");
-const experienceContainer = document.querySelector(".journey-container")
-const symbol = document.querySelector(".symbol")
+const experiences = document.querySelectorAll(".experience");
 
-experience.addEventListener("click", () => {
-    if(experienceContainer.classList.contains("journey-container-show")) {
-        experienceContainer.classList.remove("journey-container-show");
-        symbol.classList.remove("rotate");
+experiences.forEach(experience => {
+
+  const experienceContainer = experience.nextElementSibling;
+  const symbol = experience.querySelector(".symbol");
+
+  experience.addEventListener("click", () => {
+    if (experienceContainer.classList.contains("journey-container-show")) {
+      experienceContainer.classList.remove("journey-container-show");
+      symbol.classList.remove("rotate");
     } else {
-        experienceContainer.classList.add("journey-container-show");
-        symbol.classList.add("rotate");
+      experienceContainer.classList.add("journey-container-show");
+      symbol.classList.add("rotate");
     }
-})
+  });
+});
 
 commentBtn.addEventListener("click", addComment);
 commentBox.addEventListener("input", handleInputChange);
