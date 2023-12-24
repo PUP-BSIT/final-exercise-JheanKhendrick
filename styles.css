@@ -174,7 +174,8 @@ div h2 {
 }
 
 .gallery img {
-    width: 250px;
+    width: 300px;
+    max-height: 400px;
 }
 
 .goal-container {
