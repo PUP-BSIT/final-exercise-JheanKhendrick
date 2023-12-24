@@ -18,8 +18,17 @@ body {
 }
 
 .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    padding-top: 100px;
+    gap: 25px;
+}
+
+.name p {
+    padding: 5px;
 }
 
 .name .surname {
@@ -34,9 +43,19 @@ body {
     color: var(--secondary);
 }
 
-.name img {
-    margin: 20px 0;
-    max-width: 400px;
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-buttons a:hover{
+    transform: scale(1.07);
+    transition: 0.3s;
+}
+
+.social-buttons img {
+    width: 50px;
 }
 
 .button-link {
@@ -171,6 +190,12 @@ div h2 {
     justify-content: space-evenly;
     gap: 2rem;
     flex-wrap: wrap;
+}
+
+.gallery .images img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s;
 }
 
 .gallery img {
