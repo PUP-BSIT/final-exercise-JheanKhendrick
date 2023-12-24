@@ -327,6 +327,11 @@ div h2 {
     user-select: none;
 }
 
+.experience .rotate {
+    display: inline-block;
+    transform: rotate(90deg);
+}
+
 .experience:hover {
     color: var(--secondary);
 }

@@ -96,12 +96,15 @@ const sortComments = (comments, order) => {
 
 const experience = document.querySelector(".experience");
 const experienceContainer = document.querySelector(".journey-container")
+const symbol = document.querySelector(".symbol")
 
 experience.addEventListener("click", () => {
     if(experienceContainer.classList.contains("journey-container-show")) {
         experienceContainer.classList.remove("journey-container-show");
+        symbol.classList.remove("rotate");
     } else {
         experienceContainer.classList.add("journey-container-show");
+        symbol.classList.add("rotate");
     }
 })
 
