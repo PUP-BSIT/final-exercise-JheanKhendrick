@@ -3,32 +3,20 @@ const nameBox = document.querySelector("#input_name");
 const commentBox = document.querySelector("#input_comment");
 const commentContainer = document.querySelector(".comment-container");
 const sortSelect = document.querySelector("#sort_select");
+const api = "https://comments-jhean-default-rtdb.asia-southeast1.firebasedatabase.app/comment.json"
+const initialComments = [];
 
-const initialComments = [
-  {
-    name: "Mark Ryan Odrunia",
-    comment: "Great goals! hoping you achieve them someday!",
-    date: "2023-10-15T08:00:00Z",
-  },
-  {
-    name: "Adrian Naoe",
-    comment: "I love your works bro",
-    date: "2023-10-16T08:00:00Z",
-  },
-  {
-    name: "Christian Harrel Go",
-    comment: "We have similar goals, let's build community together sooner!",
-    date: "2023-10-17T08:00:00Z",
-  },
-  {
-    name: "Andronicus Dimasacat",
-    comment: "Yo, your goals are awesome.",
-    date: "2023-10-18T08:00:00Z",
-  }
-];
-
-const comments = [...initialComments];
-
+fetch(api)
+    .then(response => response.json())
+    .then(data => {
+        if(data)
+            Object.keys(data).forEach(key => {
+                initialComments.push(data[key]);
+            })
+        
+        updateComments();
+    })
+    
 const handleInputChange = () => {
     const nameLength = nameBox.value.trim().length;
     const commentLength = commentBox.value.trim().length;
@@ -48,8 +36,23 @@ const addComment = () => {
             comment,
             date: commentDate,
         };
+        
+        fetch(api, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: JSON.stringify(newComment),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data)
+                    Object.keys(data).forEach((key) => {
+                        initialComments.push(data[key]);
+                    });
+            });
 
-        comments.push(newComment);
+        initialComments.push(newComment);
         updateComments();
         nameBox.value = "";
         commentBox.value = "";
@@ -66,7 +69,7 @@ const formatDate = (dateString) => {
 
 const updateComments = () => {
     commentContainer.innerHTML = "";
-    const allComments = [...comments];
+    const allComments = [...initialComments];
     const sortedComments = sortComments(allComments, sortSelect.value);
     sortedComments.forEach((comment) => {
         const newComment = document.createElement("div");
